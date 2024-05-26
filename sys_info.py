@@ -52,6 +52,10 @@ class SystemMonitorApp(QMainWindow):
         self.update_system_info()
 
     def update_system_info(self) -> None:
+        """
+        Функция получает и обновляет информацию о системе
+        :return: None
+        """
         # Получаем информацию о системе
         cpu_name = platform.processor()
         cpu_cores = psutil.cpu_count()
@@ -90,6 +94,10 @@ class SystemMonitorApp(QMainWindow):
             self.scheduler_tasks_browser.append("Задачи планировщика: Информация недоступна")
 
     def get_disks_info(self) -> str:
+        """
+        Функция получает и обновляет информацию о дисках
+        :return: Информация о дисках
+        """
         disks_info = ""
         for i, part in enumerate(psutil.disk_partitions()):
             if not part.mountpoint == "/":
@@ -102,6 +110,11 @@ class SystemMonitorApp(QMainWindow):
         return disks_info
 
     def update_interval_changed(self, index) -> None:
+        """
+        Функия обновляет данные в зависимости от выбранного интервала времени.
+        :param index: интервал задержки выбранное пользователем.
+        :return: None
+        """
         intervals = ["1000", "5000", "10000", "30000"]
         self.timer.stop()
         self.timer.setInterval(int(intervals[index]))
