@@ -113,7 +113,7 @@ class SystemMonitorApp(QMainWindow):
         """
         Функия обновляет данные в зависимости от выбранного интервала времени.
         :param index: интервал задержки выбранное пользователем.
-        :return: None
+        :return: None.
         """
         intervals = ["1000", "5000", "10000", "30000"]
         self.timer.stop()
